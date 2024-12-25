@@ -1,0 +1,766 @@
+<?php
+$is_maintenance = false; // Đặt thành true để bật chế độ bảo trì
+
+if ($is_maintenance) {
+    header('Location: maintenance.php');
+    exit();
+}
+// Tiếp tục xử lý website nếu không bảo trì
+?>
+
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    
+    <!--=============== REMIX ICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles.css?v=2.0">
+
+    <title>Nguyễn Quang Huy - PROFILE</title>
+    <style>
+        body {
+            cursor: url('./assets/img/1.cur'), auto;
+        }
+    </style>
+</head>
+<audio id="background-music"></audio>
+                  <body>
+                    <div id="infoBox">
+                        <div class="info-content">
+                            <h2>Chào mừng bạn đến với Info Của Nguyễn Quang Huy</h2>
+                            <p>Vui lòng đọc thông tin trước khi truy cập.</p>
+                            <p>Hiện tại website đang trong quá trình phát triển nên có sai sót gì thì mong mọi người thông cảm</p>
+                            <p>Click vào button để xem được thông tin rõ hơn</p>
+
+                            <h1>👇👇👇👇 </h1>
+                            
+                            <button id="enterButton">Vào website</button>
+                        </div>
+                    </div>
+
+                
+
+                        <!-- Preloader -->
+    <div id="preloader">
+        <div id="progress-container">
+            <progress id="progress-bar" value="0" max="100"></progress>
+        </div>
+        <div id="loading-text">LOADING...</div>
+    </div>
+
+
+
+    <!--=============== HEADER ===============-->
+    <header class="profile container"style="    justify-content: center;">
+
+        <div class="sparkle-container">
+            <div class="sparkle-text">NguyenHuy Home</div>
+        </div>
+        <!-- Theme button -->
+        <i class="ri-moon-line change-theme" id="theme-button"></i>
+        
+
+        <div class="profile__container grid"style="    justify-content: center;">
+            <div class="profile__data">
+                <div class="profile__border">
+                    <div class="profile__perfil">
+                        <!-- Insert your image, according to the example size of the portfolio -->
+                        <img src="./assets/img/avt.jpg" alt="">
+
+
+
+                        
+                    </div>
+                </div>
+
+
+
+                <h1 class="profile__name">Nguyễn Quang Huy <img src="./assets/img/tick.png" alt="Đã Xác Minh" style="height: 15px; justify-content: center;" /></b>
+                </h1>
+                <h2 class="profile__profession"><i class="ri-map-pin-line"></i> BinhLuc - HaNam / VietNam </h2>
+
+                <h3 class="profile__profession">🌐 FACEBOOK - TIK TOK - INSTAGRAM 🌐 <br> 📩 TIME WORK: 7:00 - 22:00 📩 </h3>
+
+                <ul class="profile__social">
+                    <a href="https://www.facebook.com/nguyenhuy12902" target="_blank" class="profile__social-link">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                    <a href="https://zalo.me/0356129112" target="_blank" class="profile__social-link">
+                        <i class="ri-question-answer-fill"></i>
+                    </a>
+                    <a href="https://github.com/SloppyShelf64" target="_blank" class="profile__social-link">
+                        <i class="ri-github-line"></i>
+                    </a>
+                </ul>
+            </div>
+            <div class="profile__info grid">
+                <div class="profile__info-group">
+                    <h3 class="profile__info-number">+999</h3>
+                    <p class="profile__info-description">
+                        Trình Độ<br> 
+                    </p>
+                </div>
+                <div class="profile__info-group">
+                    <h3 class="profile__info-number">100%</h3>
+                    <p class="profile__info-description">
+                        Độ Uy Tín ✔️
+                    </p>
+                </div>
+                <div class="profile__info-group">
+                    <h3 class="profile__info-number">4.9/5 ★</h3>
+                    <p class="profile__info-description">Khách Hàng <br> Đánh Giá</p>
+                </div>
+                <div class="profile__info-group">
+                    <h3 class="profile__info-number">...</h3>
+                    <p class="profile__info-description">🎁</p>
+                </div>
+                <div class="profile__info-group">
+                    <h3 class="profile__info-number">900+<?php echo $views; ?></h3>
+                    <p class="profile__info-description">Lượt <br> Truy Cập</p>
+                </div>
+                <div class="profile__info-group">
+                    <h3 class="profile__info-number">...</h3>
+                    <p class="profile__info-description">🎁</p>
+                </div>
+                
+            </div>
+
+            <div class="card-container">
+            <div class="top-box">
+                <div class="top-menu">
+                    <!-------------------------------  First dropdown --------------------------------------->
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                        <i class="ri-align-left"></i>
+                        </button>
+                        <div class="dropdown-content menu">
+                            <div class="menu-list">
+                                <a href="#">About</a>
+                                <a href="#">Portfolio</a>
+                                <a href="#">Activities</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-------------------------------  Second dropdown --------------------------------------->
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                        <i class="ri-indent-decrease"></i>
+                        </button>
+                        <div class="dropdown-content more">
+                            <span class="skills-title">Skills</span>
+                            <div class="skills-list">
+                                <label>HTML</label>
+                                <label>JavaScript</label>
+                                <label>CSS</label>
+                                <label>Sass</label>
+                                <label>Raact</label>
+                                <label>Bootstrap</label>
+                                <label>WordPress</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-------------------------- End of top Box(Menu) ---------------------------------->
+
+
+            <!-------------------------- End of Image Box ---------------------------------->
+
+            <div class ="main-box">
+                <div class="user-info">
+                    <span class="name">Trang Công Cụ</span>
+                    <span class="job">- Own Web -</span>
+                </div>
+                <!-------------------------- End of user information ---------------------------------->
+
+                <div class="social-icons">
+                <div class="social-icons-box">  
+                <a href="https://fb.com/nguyenhuy12902" target="_blank" class="social-icon-box" style="color: inherit; ">
+                        <span><i class="ri-facebook-circle-fill"></i></span>
+                        <p class="social-icon-name">Facebook</p></a>
+                        </div>
+                        <div class="social-icons-box">  
+                <a href="https://github.com" target="_blank" class="social-icon-box"style="color: inherit; ">
+                    <span><i class="ri-github-fill"></i></span>
+                    <p class="social-icon-name">Github</p></a>
+                    </div>
+                    <div class="social-icons-box">  
+                    <a href="https://fb.com/nguyenhuy12902" target="_blank" class="social-icon-box" style="color: inherit; ">
+                        <span><i class="ri-instagram-fill"></i></span>
+                        <p class="social-icon-name">Instagram</p></a>
+                        </div>
+                        <div class="social-icons-box">     
+                    <a href="https://fb.com/nguyenhuy12902" target="_blank" class="social-icon-box" style="color: inherit; ">
+                        <span><i class="ri-discord-fill"></i></span>
+                        <p class="social-icon-name">Discord</p></a>
+
+                        </div>
+        
+                </div>
+                <!---------------------------- End of Social icons ------------------------------>
+                <div class="btn-box">
+                    <a href="https://sourcecode.nqhuy.com/">
+                    <button class="btn">Vào </button></a>
+                </div>
+                
+                <!---------------------------- End of button box ------------------------------>
+            </div>
+            <!---------------------------- Animated circles ------------------------------>
+      
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+           
+         <!---------------------------- End of Animated circles ------------------------------>
+     </div>
+
+     <div class="card-container2">
+            <div class="top-box2">
+                <div class="top-menu2">
+                    <!-------------------------------  First dropdown --------------------------------------->
+                    <div class="dropdown2">
+                        <button class="dropbtn2">
+                            <i class="fe fe-align-left2"></i>
+                        </button>
+                        <div class="dropdown-content menu2">
+                            <div class="menu-list2">
+                                <a href="#">About</a>
+                                <a href="#">Portfolio</a>
+                                <a href="#">Activities</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-------------------------------  Second dropdown --------------------------------------->
+                    <div class="dropdown2">
+                        <button class="dropbtn2">
+                            <i class="fe fe-more-vertical2"></i>
+                        </button>
+                        <div class="dropdown-content more2">
+                            <span class="skills-title2">Skills</span>
+                            <div class="skills-list2">
+                                <label>HTML</label>
+                                <label>JavaScript</label>
+                                <label>CSS</label>
+                                <label>Sass</label>
+                                <label>Raact</label>
+                                <label>Bootstrap</label>
+                                <label>WordPress</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-------------------------- End of top Box(Menu) ---------------------------------->
+            <!-------------------------- End of Image Box ---------------------------------->
+            <div class="main-box2">
+                <div class="user-info2">
+                    <span class="name2">Truy Cập Nhanh</span>
+                    <span class="job2">- Web Designer By Nguyen Huy -</span>
+                </div>
+                <!-------------------------- End of user information ---------------------------------->
+                <div class="social-icons2">
+                    <div class="social-icon-box2">
+
+                    </div>
+                </div>
+                <!---------------------------- End of Social icons ------------------------------>
+                <div class="btn-box2">
+
+                <a href="https://bill.nqhuy.com" class="custom-button">Trang Chuyển Khoản</a>
+                </div>
+
+                <style>
+        .custom-button {
+            display: block; /* Tự động xuống dòng */
+            padding: 15px 40px;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            color: #007BFF;
+            border: 2px solid #007BFF;
+            border-radius: 50px;
+            background-color: transparent;
+            margin-bottom: 10px; /* Khoảng cách giữa các nút */
+            transition: all 0.3s ease;
+        }
+        
+
+        /* Hiệu ứng hover */
+        .custom-button:hover {
+            background-color: #007BFF; /* Tô màu nền khi hover */
+            color: #fff; /* Đổi màu chữ thành trắng */
+            text-decoration: none; /* Đảm bảo không gạch chân */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+        }
+
+        /* Responsive cho màn hình nhỏ */
+        @media (max-width: 600px) {
+            .custom-button {
+                padding: 10px 30px; /* Giảm kích thước trên thiết bị nhỏ */
+                font-size: 16px;
+            }
+        }
+                </style>
+                
+                <!---------------------------- End of button box ------------------------------>
+            </div>
+            <!---------------------------- Animated circles ------------------------------>
+      
+               <div class="circle-1"></div>
+               <div class="circle-2"></div>
+              
+            <!---------------------------- End of Animated circles ------------------------------>
+        </div>
+
+
+            
+
+            <div class="profile__buttons">
+                <!-- Insert your CV -->
+                <a href="./Info-Payments/index.html" class="button">
+                    Thông Tin Thanh Toán<i class="ri-bank-line"></i>
+                </a>
+                 <a href="guicrushne" class="button">
+                    Tán Crush Bao Đổ <i class="ri-heart-fill"></i>
+                </a>
+
+                <div class="profile__buttons-small">
+                    <!-- Insert a real number plus country code -->
+                    <a href="#" target="_blank" class="button button__small button__gray">
+                        <i class="ri-whatsapp-line"></i>
+                    </a>
+                    <!-- Insert your brand name or profile -->
+                    <a href="https://www.messenger.com/t/nguyenhuy12902" target="_blank" class="button button__small button__gray">
+                        <i class="ri-messenger-line"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+
+    <!--=============== MAIN ===============-->
+    <main class="main">
+        <section class="filters container">
+            <!--=============== FILTERS TABS ===============-->
+           
+            <ul class="filters__content">
+                <button class="filters__button filter-tab-active" data-target="#projects">
+                    Website của mình
+                     
+                </button>
+               
+     
+                <button class="filters__button" data-target="#skills">
+                    Kĩ Năng Đang Học
+                </button>
+                
+                <button class="filters__button" data-target="#tucodethem">
+                    Thông Tin Sâu
+                </button>
+                
+            </ul>
+
+            <div class="filters__sections">
+                
+            
+    
+                <!--=============== PROJECTS ===============-->
+                <div class="projects__content grid filters__active" data-content id="projects">
+                    Lưu ý Mobile : Bấm vào ảnh sau đó bấm vào con mắt để được chuyển hướng sang web!
+                    <article class="projects__card">
+                       
+                        <!-- Insert your image in a rectangular format (Ex: 600 x 400, 1000 x 800, 1200 x 1000, etc) -->
+                        <img src="./assets/img/facebook.png" alt="" class="projects__img">
+
+                        <div class="projects__modal">
+                            <div>
+                                <span class="projects__subtitle">Trang Chủ</span>
+                                <h3 class="projects__title">NGUYỄN QUANG HUY</h3>
+                                <a href="https://facebook.com/nguyenhuy12902" class="projects__button button button__small">
+                                    <i class="ri-eye-fill"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="projects__card">
+                        <img src="./assets/img/infopayment.jfif" alt="" class="projects__img">
+
+                        <div class="projects__modal">
+                            <div>
+                                <span class="projects__subtitle">Web</span>
+                                <h3 class="projects__title">Info-Payments</h3>
+                                <a href="https://dinhduyvinh.blogspot.com/" class="projects__button button button__small">
+                                    <i class="ri-eye-fill"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="projects__card">
+                        <img src="..png" alt="" class="projects__img">
+
+                        <div class="projects__modal">
+                            <div>
+                                <span class="projects__subtitle">Web</span>
+                                <h3 class="projects__title">Trang Chuyển Khoản</h3>
+                                <a href="https://bill.nqhuy.com/" class="projects__button button button__small">
+                                    <i class="ri-eye-fill"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+
+                </div>
+            
+
+                <!--=============== SKILLS ===============-->
+                <div class="skills__content grid" data-content id="skills">
+                    <div class="skills__area">
+                        <h3 class="skills__title">Kĩ Năng Đã Và Đang Học </h3>
+
+                        <div class="skills__box">
+                            <div class="skills__group">
+                                <div class="skills__data">
+                                    <i class="ri-checkbox-circle-line"></i>
+    
+                                    <div>
+                                        <h3 class="skills__name">HTML</h3>
+                                        <span class="skills__level">Basic</span>
+                                    </div>
+                                </div>
+    
+                                <div class="skills__data">
+                                    <i class="ri-checkbox-circle-line"></i>
+    
+                                    <div>
+                                        <h3 class="skills__name">CSS</h3>
+                                        <span class="skills__level">Advanced</span>
+                                    </div>
+                                </div>
+    
+                                <div class="skills__data">
+                                    <i class="ri-checkbox-circle-line"></i>
+    
+                                    <div>
+                                        <h3 class="skills__name">JavaScript</h3>
+                                        <span class="skills__level">Intermediate</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="skills__group">
+                                <div class="skills__data">
+                                    <i class="ri-checkbox-circle-line"></i>
+    
+                                    <div>
+                                        <h3 class="skills__name">PHP</h3>
+                                        <span class="skills__level">Intermediate</span>
+                                    </div>
+                                </div>
+    
+                                <div class="skills__data">
+                                    <i class="ri-checkbox-circle-line"></i>
+    
+                                    <div>
+                                        <h3 class="skills__name">Python</h3>
+                                        <span class="skills__level">Basic</span>
+                                    </div>
+                                </div>
+    
+                                <div class="skills__data">
+                                    <i class="ri-checkbox-circle-line"></i>
+    
+                                    <div>
+                                        <h3 class="skills__name">Git</h3>
+                                        <span class="skills__level">Intermediate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills__area">
+                        <h3 class="skills__title">Tầng Lớp Đã Học Và Đào Tạo</h3>
+
+                        <div class="skills__box">
+                            <div class="skills__group">
+                                <div class="skills__data">
+                                    <i class="ri-checkbox-circle-line"></i>
+    
+                                    <div>
+                                        <h3 class="skills__name">Class ①</h3>
+                                        <span class="skills__level">Very Good</span>
+                                    </div>
+                                </div>
+    
+                                <div class="skills__data">
+                                    <i class="ri-checkbox-circle-line"></i>
+    
+                                    <div>
+                                        <h3 class="skills__name">Class ②</h3>
+                                        <span class="skills__level">Very Good</span>
+                                    </div>
+                                </div>
+    
+                                <div class="skills__data">
+                                    <i class="ri-checkbox-circle-line"></i>
+    
+                                    <div>
+                                        <h3 class="skills__name">Class ③</h3>
+                                        <span class="skills__level">Very Good</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="skills__group">
+                                <div class="skills__data">
+                                    <i class="ri-checkbox-circle-line"></i>
+    
+                                    <div>
+                                        <h3 class="skills__name">Class ❹</h3>
+                                        <span class="skills__level">Basic</span>
+                                    </div>
+                                </div>
+    
+                                <div class="skills__data">
+                                    <i class="ri-checkbox-circle-line"></i>
+    
+                                    <div>
+                                        <h3 class="skills__name">Class ⑤</h3>
+                                        <span class="skills__level">Very Good</span>
+                                    </div>
+                                </div>
+
+                                <div class="skills__data">
+                                    <i class="ri-checkbox-circle-line"></i>
+    
+                                    <div>
+                                        <h3 class="skills__name">Class ⑥</h3>
+                                        <span class="skills__level">Very Good</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <!--=============== tucodethem===============-->
+                 <div class="skills__content grid" data-content id="tucodethem" style ="text-align: center;">
+                  <h1 > Đang Cập Nhật nhe</h1>
+                  </div>
+            </div>
+           </div> 
+        </section>
+        
+
+
+
+
+
+        
+    </main>
+    
+    
+    <!--=============== FOOTER ===============-->
+    <footer class="footer container">
+        <span class="footer__copy">
+            &#169; </a>  2024 </a> NQHUY.COM. All Rights Reserved 
+        </span>
+    </footer>
+
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="assets/js/scrollreveal.min.js?v=1.0"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="assets/js/main.js?v=1.0"></script>
+    <head>
+
+<div class="codepro-time">
+  <span id="codepro-hour"></span>
+  <span id="codepro-date"></span>
+</div>
+<style>
+/* Màu chữ cho nền sáng */
+.codepro-time {
+    text-align: center;
+}
+
+#codepro-hour {
+    font-weight: 400;
+    display: block;
+    font-size: 30px;
+    margin: 0 0 5px;
+    letter-spacing: 5px;
+    color: #333; /* Màu tối cho nền sáng */
+}
+
+/* Màu chữ cho nền tối */
+body.dark-theme .codepro-time #codepro-hour {
+    color: #eef3f7; /* Màu sáng cho nền tối */
+}
+
+body.dark-theme .codepro-time #codepro-date {
+    color: #eef3f7; /* Màu sáng cho phần ngày tháng trong chế độ tối */
+}
+
+#codepro-date {
+    font-weight: 400;
+    font-size: 20px;
+    color: #333; /* Màu tối cho nền sáng */
+}
+</style>
+<script type="text/javascript">
+    var myVar = setInterval(function() {
+        myTimer()
+    }, 1000);
+    function myTimer() {
+        var d = new Date();
+        var t = d.toLocaleTimeString();
+        document.getElementById("codepro-hour").innerHTML = t;
+    }
+    n = new Date();
+    if (n.getTimezoneOffset() == 0) t = n.getTime() + (7 * 60 * 60 * 1000);
+    else t = n.getTime();
+    n.setTime(t);
+    var dn = new Array("Chủ nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7");
+    d = n.getDay();
+    m = n.getMonth() + 1;
+    y = n.getFullYear()
+    var date = dn[d] + ", " + (n.getDate() < 10 ? "0" : "") + n.getDate() + "/" + (m < 10 ? "0" : "") + m + "/" + y;
+  	document.getElementById("codepro-date").innerHTML = date;
+</script>
+	    <title>Nguyễn Quang Huy (Sloppy)</title>
+</head>
+
+
+<!-- count particles -->
+
+<!-- particles.js container -->
+<div id="particles-js"></div>
+
+<!-- scripts -->
+<script src="./particles.js?v=1.0"></script>
+<script src="./assets/js/app.js?v=1.0"></script>
+<script src ="./assets/js/audio.js?v=1.0"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="./assets/js/infobox.js?v=1.0"></script>
+<script>
+    // Bắt đầu tải preloader
+    function startPreloader() {
+        let progress = 0;
+        const progressBar = document.getElementById('progress-bar');
+        const loadingText = document.getElementById('loading-text');
+        const content = document.getElementById('content');
+        const preloader = document.getElementById('preloader');
+
+        function updateProgress() {
+            if (progress < 100) {
+                progress += 3;  // Tăng tốc độ tăng thanh progress
+                progressBar.value = progress;
+                loadingText.innerText = `LOADING... ${progress}%`;
+                setTimeout(updateProgress, 20);  // Giảm thời gian chờ giữa các lần cập nhật
+            } else {
+                // Ẩn preloader và hiển thị nội dung chính
+                $('#preloader').fadeOut(200);  // Hiệu ứng ẩn preloader
+                $('#content').fadeIn(2000);    // Hiệu ứng hiển thị nội dung
+                enableScrollReveal();  // Kích hoạt ScrollReveal khi trang đã tải xong
+            }
+        }
+
+        // Bắt đầu quá trình tải
+        updateProgress();
+    }
+
+    // Kích hoạt ScrollReveal
+    function enableScrollReveal() {
+        const sr = ScrollReveal({
+            origin: 'top',
+            distance: '60px',
+            duration: 2500,
+            delay: 500,
+        });
+
+        // Kích hoạt hiệu ứng cho các phần tử khi cuộn trang
+        sr.reveal('.profile__border');
+        sr.reveal('.profile__name', {delay: 500});
+        sr.reveal('.card-container', {delay: 900});
+        sr.reveal('.card-container2', {delay: 900});
+        sr.reveal('.profile__profession', {delay: 600});
+        sr.reveal('.profile__social', {delay: 700});
+        sr.reveal('.profile__info-group', {interval: 100, delay: 700});
+        sr.reveal('.profile__buttons', {delay: 800});
+        sr.reveal('.filters__content', {delay: 900});
+        sr.reveal('.filters', {delay: 1000});
+    }
+
+    // Khi trang đã sẵn sàng, bắt đầu preloader
+    $(document).ready(function() {
+        startPreloader();
+    });
+</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const audio = document.getElementById("background-music");
+
+            // Danh sách các bài hát
+            const songs = [
+                "https://files.catbox.moe/ryfi5i.mp3",
+                "https://files.catbox.moe/142znz.mp3",
+                "https://files.catbox.moe/0f184c.mp3",
+            ];
+
+            // Hàm chọn bài hát ngẫu nhiên
+            function getRandomSong() {
+                return songs[Math.floor(Math.random() * songs.length)];
+            }
+
+            // Gán bài hát ngẫu nhiên cho audio
+            const randomSong = getRandomSong();
+            audio.src = randomSong;
+
+            // Bật tính năng lặp (nếu muốn lặp lại bài hiện tại)
+            audio.loop = false; // Đặt thành `true` nếu muốn phát lại bài hiện tại.
+
+            // Phát nhạc ngay khi tải trang
+            audio.play()
+                .then(() => {
+                    console.log("Nhạc đã phát tự động:", randomSong);
+                })
+                .catch(error => {
+                    console.log("Trình duyệt chặn tự động phát nhạc:", error);
+
+                    // Yêu cầu tương tác nếu bị chặn
+                    document.body.addEventListener("click", () => {
+                        audio.play();
+                        console.log("Nhạc bắt đầu phát sau khi click:", randomSong);
+                    });
+                });
+
+            // Phát bài hát mới ngẫu nhiên khi bài hát hiện tại kết thúc
+            audio.addEventListener("ended", () => {
+                const nextSong = getRandomSong();
+                audio.src = nextSong;
+                audio.play();
+                console.log("Đang phát bài mới:", nextSong);
+            });
+        });
+    </script>
+</body>
+</html>
